@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curating PMIS in Healthcare IT: Assignment 01</title>
+<title>PMIS in Healthcare IT: A Curated Collection</title>
 <style>
   :root {
     --bg: #f7f7f5;
@@ -15,6 +15,8 @@
     --accent-soft: #eaf1f8;
     --tag-bg: #eef2ee;
     --tag-ink: #33513c;
+    --tag2-bg: #f3ecf7;
+    --tag2-ink: #5b3a75;
     --radius: 10px;
     --serif: Georgia, 'Times New Roman', serif;
     --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -28,7 +30,7 @@
     line-height: 1.6;
   }
   .wrap {
-    max-width: 860px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 24px 80px;
   }
@@ -47,20 +49,43 @@
   }
   header.hero h1 {
     font-family: var(--serif);
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     line-height: 1.25;
     margin: 0 0 12px;
   }
   header.hero p.meta {
     color: var(--ink-soft);
     font-size: 0.95rem;
-    margin: 0;
+    margin: 0 0 20px;
+  }
+  header.hero .intro {
+    font-size: 1rem;
+    max-width: 700px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 22px 0 6px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+  .stat strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--accent);
   }
   nav.toc {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 22px;
   }
   nav.toc a {
     font-size: 0.85rem;
@@ -72,68 +97,28 @@
     border: 1px solid transparent;
   }
   nav.toc a:hover { border-color: var(--accent); }
+  nav.toc a.alt {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--ink-soft);
+  }
 
   section {
-    margin-bottom: 52px;
+    margin-bottom: 48px;
     scroll-margin-top: 20px;
   }
-  section h2 {
+  .category-block h2 {
     font-family: var(--serif);
-    font-size: 1.5rem;
-    margin: 0 0 6px;
-  }
-  section .section-num {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-soft);
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  section > p {
-    margin: 14px 0;
-  }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 22px;
-    margin: 16px 0;
-  }
-
-  .structure-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-    margin-top: 18px;
-  }
-  .structure-grid .cat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--accent);
-    border-radius: 8px;
-    padding: 14px 16px;
-  }
-  .structure-grid .cat h3 {
-    margin: 0 0 6px;
-    font-size: 0.98rem;
-  }
-  .structure-grid .cat p {
-    margin: 0;
-    font-size: 0.87rem;
-    color: var(--ink-soft);
-  }
-
-  .category-block {
-    margin-top: 30px;
-  }
-  .category-block h3 {
-    font-family: var(--serif);
-    font-size: 1.15rem;
+    font-size: 1.4rem;
     color: var(--accent);
     border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-    margin-bottom: 16px;
+    padding-bottom: 10px;
+    margin-bottom: 6px;
+  }
+  .category-block .category-desc {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin: 0 0 18px;
   }
 
   .source-card {
@@ -145,7 +130,7 @@
   }
   .source-card .src-title {
     font-weight: 600;
-    font-size: 1.02rem;
+    font-size: 1.04rem;
     margin: 0 0 4px;
   }
   .source-card .src-title a {
@@ -157,7 +142,13 @@
   .source-card .src-meta {
     font-size: 0.8rem;
     color: var(--ink-soft);
-    margin-bottom: 4px;
+    margin-bottom: 10px;
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
   }
   .tag {
     display: inline-block;
@@ -168,41 +159,15 @@
     letter-spacing: 0.02em;
     padding: 3px 10px;
     border-radius: 999px;
-    margin-bottom: 10px;
+  }
+  .tag.format {
+    background: var(--tag2-bg);
+    color: var(--tag2-ink);
   }
   .annotation {
     font-size: 0.94rem;
-    margin: 10px 0 0;
+    margin: 6px 0 0;
     color: var(--ink);
-  }
-  .annotation strong {
-    color: var(--ink-soft);
-    font-weight: 600;
-  }
-  .wordcount {
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    margin-top: 10px;
-    font-style: italic;
-  }
-
-  table.tool-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 14px;
-    font-size: 0.92rem;
-  }
-  table.tool-table td, table.tool-table th {
-    text-align: left;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-  }
-  table.tool-table th {
-    color: var(--ink-soft);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 
   footer {
@@ -211,6 +176,7 @@
     font-size: 0.82rem;
     color: var(--ink-soft);
   }
+  footer a { color: var(--accent); }
 
   @media (prefers-color-scheme: dark) {
     :root {
@@ -223,6 +189,8 @@
       --accent-soft: #1e2a36;
       --tag-bg: #1e2b22;
       --tag-ink: #9bd2ac;
+      --tag2-bg: #2a2233;
+      --tag2-ink: #cba8e6;
     }
   }
 </style>
@@ -231,227 +199,294 @@
 <div class="wrap">
 
   <header class="hero">
-    <div class="eyebrow">CMPA 4301 · Assignment 01 · Curation Plan</div>
-    <h1>Curating Project Management Information Systems (PMIS) in Healthcare IT</h1>
-    <p class="meta">Sid Bhardwaj. Planning document for an ongoing curated collection, expanded from Exercise 01: Source Discovery.</p>
+    <div class="eyebrow">CMPA 4301 · Project 01 · Curated Collection</div>
+    <h1>Project Management Information Systems (PMIS) in Healthcare IT</h1>
+    <p class="meta">Sid Bhardwaj · sidhbhardwaj426@gmail.com</p>
+
+    <p class="intro">
+      This collection gathers eighteen sources on Project Management Information Systems (PMIS) in healthcare IT:
+      the software platforms, governance structures, and methodologies healthcare organizations use to plan,
+      execute, and report on IT projects such as EHR rollouts, system integrations, and infrastructure upgrades.
+      It grew out of Assignment 01, a planning document that scoped the topic and proposed the organizational
+      structure used here, and it now includes real books, peer-reviewed research, a podcast, a video, an online
+      course, a government resource, industry news, an open-source tool, and a commercial vendor case study,
+      deliberately spanning depth and format rather than repeating the same kind of source eighteen times.
+    </p>
+    <p class="intro">
+      Sources are organized into five categories, each answering a different question a reader might bring to
+      this collection. <strong>Foundations and Methodology</strong> is the starting point for anyone new to the
+      topic. <strong>Healthcare IT Governance and PMO Structures</strong> covers how organizations build and run
+      the office around the system. <strong>Research and Evidence</strong> holds the peer-reviewed and
+      survey-based sources for readers who want data rather than opinion. <strong>Tools and Systems</strong> shows
+      real PMIS platforms, open-source and commercial, in use. <strong>Industry Trends and Current Practice</strong>
+      covers how PMIS is being discussed and applied right now.
+    </p>
+    <p class="intro">
+      To use this collection, start with whichever category matches what you are trying to do rather than reading
+      top to bottom. Each entry names its category and format, links to the original source, and includes a short
+      annotation explaining what it covers, why it is here, who benefits most, and where its limits are.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat"><strong>18</strong>sources</div>
+      <div class="stat"><strong>5</strong>categories</div>
+      <div class="stat"><strong>13</strong>distinct formats</div>
+    </div>
+
     <nav class="toc">
-      <a href="#topic">1. Topic Statement</a>
-      <a href="#structure">2. Organizational Structure</a>
-      <a href="#sources">3. Initial Sources</a>
-      <a href="#tool">4. Tool Selection</a>
+      <a href="#foundations">Foundations &amp; Methodology</a>
+      <a href="#governance">Governance &amp; PMO Structures</a>
+      <a href="#research">Research &amp; Evidence</a>
+      <a href="#tools">Tools &amp; Systems</a>
+      <a href="#trends">Industry Trends &amp; Current Practice</a>
+      <a href="assignment-01.html" class="alt">Assignment 01 planning doc &rarr;</a>
     </nav>
   </header>
 
-  <section id="topic">
-    <div class="section-num">Component 1</div>
-    <h2>Topic Statement</h2>
-    <p>
-      My collection curates resources on <strong>Project Management Information Systems (PMIS) in healthcare IT</strong>:
-      the software platforms, governance structures, and methodologies healthcare organizations use to plan, execute, and
-      report on IT projects such as EHR rollouts, system integrations, and infrastructure upgrades. I work in this space
-      professionally, and I'm building this collection to have one reliable place to point to for grounded, practitioner-tested
-      guidance instead of re-researching the same ground every time a new implementation starts.
-    </p>
-    <p>
-      <strong>Scope:</strong> I'm including sources that address PMIS specifically within a healthcare or health IT context,
-      including foundational methodology, healthcare PMO governance models, practitioner and academic research on PMIS
-      effectiveness, real inspectable PMIS tools, and current industry coverage. I'm excluding general enterprise project
-      management content not tied to IT systems (construction, manufacturing, etc.), vendor sales pages without substantive
-      detail, and sources that only mention PMIS in passing rather than treating it as a central focus.
-    </p>
+  <section id="foundations" class="category-block">
+    <h2>Foundations &amp; Methodology</h2>
+    <p class="category-desc">Core texts, frameworks, and entry points for understanding what a PMIS is and how it fits into a health IT project.</p>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.routledge.com/The-Project-Managers-Guide-to-Health-Information-Technology-Implementation/Houston/p/book/9781032073873" target="_blank" rel="noopener">The Project Manager's Guide to Health Information Technology Implementation</a></p>
+      <p class="src-meta">Susan M. Houston · HIMSS Book Series (Routledge / Productivity Press), 3rd ed.</p>
+      <div class="tag-row">
+        <span class="tag">Category: Foundations &amp; Methodology</span>
+        <span class="tag format">Format: Book</span>
+      </div>
+      <p class="annotation">
+        This book maps PMI's PMBOK process groups and knowledge areas directly onto health IT software implementations, walking through initiation, planning, execution, monitoring, and closeout for both custom-built and commercial off-the-shelf clinical systems. Houston, a PMP and clinical informaticist with a nursing background, writes for practitioners rather than theorists, using real implementation scenarios instead of abstract examples, which is why this reads closer to a working reference manual than a textbook. Health IT project managers, PMP candidates moving into healthcare, and IT directors overseeing clinical system rollouts will get the most out of it. One limitation: it assumes readers already know standard PMBOK terminology, so someone with no project management background at all should pair it with an introductory PM resource before diving in. Now in its third edition, it stays current with modern implementation practice.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.mheducation.com/highered/mhp/product/project-management-healthcare-information-technology.html" target="_blank" rel="noopener">Project Management for Healthcare Information Technology</a></p>
+      <p class="src-meta">Scott Coplan &amp; David Masuda · McGraw-Hill (2011)</p>
+      <div class="tag-row">
+        <span class="tag">Category: Foundations &amp; Methodology</span>
+        <span class="tag format">Format: Book</span>
+      </div>
+      <p class="annotation">
+        Co-authored by a PMP and a practicing physician, this book synthesizes three disciplines (project management, IT/product management, and organizational change management) into one integrated methodology built specifically for healthcare technology rollouts. What makes it useful is that it treats clinical adoption and workflow disruption as core project risks rather than afterthoughts, addressing the exact problems that pure IT project management texts tend to overlook and that are often the real reason healthcare implementations fail. Project managers and IT leaders who work directly with clinical staff during EHR or system rollouts, and who need buy-in from physicians and nurses, will benefit most. Note that it was published in 2011, so specific software and tool references are dated, though the underlying three-discipline framework for balancing technical, clinical, and change management concerns still holds up well today.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.coursera.org/learn/foundations-of-healthcare-project-management" target="_blank" rel="noopener">Foundations of Healthcare Project Management</a></p>
+      <p class="src-meta">Coursera</p>
+      <div class="tag-row">
+        <span class="tag">Category: Foundations &amp; Methodology</span>
+        <span class="tag format">Format: Online Course</span>
+      </div>
+      <p class="annotation">
+        This Coursera course introduces the foundational concepts of project management specifically within a healthcare context, aimed at learners who are new to formal project management altogether rather than experienced PMs looking to specialize. It covers core PM vocabulary, healthcare-specific constraints like regulatory compliance and clinical stakeholder management, and basic planning and execution steps, structured as a guided, self-paced learning path rather than a static reference. It earns a place here because it offers a structured, beginner-friendly on-ramp that the denser books and papers in this collection don't provide, and because video-based instruction suits some learners better than text. People entirely new to healthcare project management, including clinical staff moving into project coordination roles, will benefit most. As you'd expect from an introductory course, experienced project managers will find little new material, and a subscription or one-time payment is required to access it in full.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://en.wikipedia.org/wiki/Project_management_information_system" target="_blank" rel="noopener">Project management information system</a></p>
+      <p class="src-meta">Wikipedia</p>
+      <div class="tag-row">
+        <span class="tag">Category: Foundations &amp; Methodology</span>
+        <span class="tag format">Format: Reference</span>
+      </div>
+      <p class="annotation">
+        This Wikipedia article defines project management information systems in general terms, covering the core components, categories of PMIS software, and how a PMIS differs from a general project management system, without any healthcare-specific framing. It's here as a deliberately neutral, jargon-free baseline: before engaging with healthcare-specific sources elsewhere in this collection, a reader unfamiliar with the term benefits from seeing the general definition first, since several other sources here assume it. Students, career-changers, or anyone encountering the term PMIS for the first time will find it most useful as a starting point. Keep in mind that Wikipedia articles are collaboratively edited and can change or be incomplete at any time, and this one in particular offers no healthcare context at all, so it should be treated strictly as a glossary-style entry point rather than a substantive source in its own right.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.healthit.gov/playbook/full/" target="_blank" rel="noopener">Health IT Playbook</a></p>
+      <p class="src-meta">Office of the National Coordinator for Health IT (ONC) · HealthIT.gov</p>
+      <div class="tag-row">
+        <span class="tag">Category: Foundations &amp; Methodology</span>
+        <span class="tag format">Format: Government Guide</span>
+      </div>
+      <p class="annotation">
+        The Office of the National Coordinator for Health IT's Health IT Playbook is a free, federally maintained implementation guide covering EHR selection, planning, security risk assessment, and patient engagement, built for administrators and practice staff navigating a health IT project from start to finish. What sets it apart is that it's an authoritative, vendor-neutral government resource rather than a commercial or academic one, offering practical tools like an EHR contract guide and a security risk assessment tool alongside its planning guidance. Practice administrators, project managers at smaller health systems without a formal PMO, and clinicians stepping into project coordination roles will find it most directly usable. It's oriented toward outpatient practices and smaller organizations selecting and implementing an EHR for the first time, though, so large health systems with mature PMOs running complex, multi-system programs will find it less directly applicable than the enterprise-focused sources elsewhere in this collection.
+      </p>
+    </div>
   </section>
 
-  <section id="structure">
-    <div class="section-num">Component 2</div>
-    <h2>Proposed Organizational Structure</h2>
-    <p>
-      I'm organizing sources <strong>by function within the PMIS knowledge domain</strong>, meaning what job a reader is
-      trying to do when they open the source, rather than by format or publication date. Five categories:
-    </p>
-    <div class="structure-grid">
-      <div class="cat">
-        <h3>Foundations &amp; Methodology</h3>
-        <p>Core texts establishing PMBOK-based frameworks for health IT project management.</p>
+  <section id="governance" class="category-block">
+    <h2>Healthcare IT Governance &amp; PMO Structures</h2>
+    <p class="category-desc">How organizations build, staff, and run the office around the PMIS, illustrated with real examples.</p>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.pmi.org/learning/library/project-management-office-healthcare-information-technology-8060" target="_blank" rel="noopener">Project Management Office in Healthcare Information Technology</a></p>
+      <p class="src-meta">L. Aziz · PMI Global Congress, via PMI.org</p>
+      <div class="tag-row">
+        <span class="tag">Category: Governance &amp; PMO Structures</span>
+        <span class="tag format">Format: Practitioner Paper</span>
       </div>
-      <div class="cat">
-        <h3>Healthcare IT Governance &amp; PMO Structures</h3>
-        <p>How organizations build and staff the office around the system.</p>
-      </div>
-      <div class="cat">
-        <h3>Research &amp; Evidence</h3>
-        <p>Practitioner surveys and academic studies on what PMIS actually delivers.</p>
-      </div>
-      <div class="cat">
-        <h3>Tools &amp; Systems</h3>
-        <p>Real, inspectable PMIS software rather than secondhand descriptions.</p>
-      </div>
-      <div class="cat">
-        <h3>Industry Trends &amp; Current Practice</h3>
-        <p>How PMIS is being discussed and used right now.</p>
-      </div>
+      <p class="annotation">
+        This PMI Global Congress paper examines how healthcare IT PMOs differ structurally from PMOs in other industries, covering the governance models, staffing patterns, and tooling decisions a PMO needs to succeed inside a hospital or health system. What earns it a place here is that it addresses the exact organizational angle this collection focuses on: not just PMIS software, but the office and governance structure built around it, including how PMO authority and reporting lines typically work in a clinical organization. Healthcare IT leaders designing or restructuring a PMO, or project managers trying to understand where their office fits in the broader organization, will find it most useful. Worth noting: it's a conference paper rather than a peer-reviewed journal study, so its claims rely more on practitioner experience and case observation than controlled empirical research, and it should be read alongside more recent, data-driven sources in this collection.
+      </p>
     </div>
-    <p>
-      <strong>Rationale:</strong> My audience is healthcare IT project managers and PMP-track professionals who arrive with
-      different needs. Someone new to the field wants Foundations, someone building a PMO wants Governance, someone
-      justifying a tool purchase wants Research &amp; Evidence, someone technical wants to see inside a real Tool, and
-      everyone benefits from staying current with Industry Trends. Organizing by function rather than chronology or source
-      type lets a reader jump straight to the category that matches the decision they're actually trying to make.
-    </p>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://optimumhit.com/insights/videos/ask-the-healthcare-pmo-expert-why-your-projects-arent-delivering-and-how-to-fix-it/" target="_blank" rel="noopener">Ask the Healthcare PMO Expert: Why Your Projects Aren't Delivering (And How to Fix It)</a></p>
+      <p class="src-meta">Optimum Healthcare IT</p>
+      <div class="tag-row">
+        <span class="tag">Category: Governance &amp; PMO Structures</span>
+        <span class="tag format">Format: Video</span>
+      </div>
+      <p class="annotation">
+        This recorded expert conversation addresses why healthcare IT projects commonly fail to deliver and what a PMO can do differently, covering issues like unclear intake processes, weak prioritization, and insufficient executive sponsorship in hospital settings. It's a useful, shorter-format entry point into PMO-specific pain points compared to the longer academic and book sources elsewhere in this collection, and its conversational format surfaces the kind of practical, on-the-ground frustration that formal papers tend to smooth over. Healthcare IT project managers and PMO leaders who want a quick, relatable diagnostic of common PMO dysfunction, rather than a full framework, will benefit most. Worth flagging: it's produced by a healthcare IT consulting firm, so it has a promotional undertone and should be treated as an expert opinion piece rather than independent research; it's most useful for generating discussion points rather than citable data.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://hcis.healthcare.uiowa.edu/pmo/index.html" target="_blank" rel="noopener">UI Health Care Project Management Office</a></p>
+      <p class="src-meta">University of Iowa Health Care</p>
+      <div class="tag-row">
+        <span class="tag">Category: Governance &amp; PMO Structures</span>
+        <span class="tag format">Format: Organization Page</span>
+      </div>
+      <p class="annotation">
+        The University of Iowa Health Care Project Management Office publishes its own standards, status-reporting templates, tools, and consultation services directly on this page, making it a real, currently operating example of how one academic health system structures and documents its PMO rather than a secondhand description of one. What makes it worth including is that it shows the actual artifacts a functioning healthcare PMO produces, like standardized status reports and project templates, giving something concrete to compare against a reader's own workplace PMO or the theoretical PMO models discussed elsewhere in this collection. Healthcare IT PMO leaders setting up or refining their own office's documentation and reporting standards will find it most directly useful. It reflects one specific academic medical center's approach and scale, though, so smaller community hospitals or larger multi-facility systems may need to adapt its templates and processes rather than adopt them directly.
+      </p>
+    </div>
   </section>
 
-  <section id="sources">
-    <div class="section-num">Component 3</div>
-    <h2>Initial Sources</h2>
-    <p>
-      Building on Exercise 01: Source Discovery (10 sources found across six discovery methods), these are the 5–7
-      strongest sources, expanded into full annotations and placed within the structure above.
-    </p>
+  <section id="research" class="category-block">
+    <h2>Research &amp; Evidence</h2>
+    <p class="category-desc">Practitioner surveys, case data, and peer-reviewed studies on what actually drives PMIS and healthcare IT project outcomes.</p>
 
-    <div class="category-block">
-      <h3>Foundations &amp; Methodology</h3>
-
-      <div class="source-card">
-        <p class="src-title"><a href="https://www.routledge.com/The-Project-Managers-Guide-to-Health-Information-Technology-Implementation/Houston/p/book/9781032073873" target="_blank" rel="noopener">The Project Manager's Guide to Health Information Technology Implementation</a></p>
-        <p class="src-meta">Susan M. Houston · HIMSS Book Series (Routledge / Productivity Press)</p>
-        <span class="tag">Category: Foundations &amp; Methodology</span>
-        <p class="annotation">
-          This book maps PMI's PMBOK process groups and knowledge areas directly onto health IT software implementations,
-          covering initiation through closeout for both custom-built and commercial off-the-shelf systems. Houston, a PMP
-          and clinical informaticist, writes for practitioners rather than theorists, which is why this reads close to a
-          reference manual for the work I actually do. Health IT project managers and PMP candidates moving into
-          healthcare will benefit most. One limitation: it assumes familiarity with standard PMBOK terminology, so readers
-          without a project management background should pair it with an introductory PM resource first.
-        </p>
-        <p class="wordcount">93 words</p>
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.pmi.org/learning/library/project-management-information-systems-overviews-5813" target="_blank" rel="noopener">Project Management Information Systems Overviews</a></p>
+      <p class="src-meta">M. A. B. Ilyas, M. K. Hassan &amp; M. U. Ilyas · PMI Global Congress 2013, EMEA, via PMI.org</p>
+      <div class="tag-row">
+        <span class="tag">Category: Research &amp; Evidence</span>
+        <span class="tag format">Format: Practitioner Survey</span>
       </div>
-
-      <div class="source-card">
-        <p class="src-title"><a href="https://www.mheducation.com/highered/mhp/product/project-management-healthcare-information-technology.html" target="_blank" rel="noopener">Project Management for Healthcare Information Technology</a></p>
-        <p class="src-meta">Scott Coplan &amp; David Masuda · McGraw-Hill (2011)</p>
-        <span class="tag">Category: Foundations &amp; Methodology</span>
-        <p class="annotation">
-          Co-authored by a PMP and a practicing physician, this book synthesizes three disciplines (project management,
-          IT/product management, and organizational change management) into one methodology for healthcare technology
-          rollouts. What makes it useful here is that it addresses the clinical adoption and workflow-disruption problems
-          that pure IT project management texts overlook, often the actual reason healthcare implementations fail.
-          Project managers and IT leaders who work directly with clinical staff during system rollouts will get the most
-          from it. Note that it was published in 2011, so specific tool references are dated, though the underlying
-          three-discipline methodology still holds up.
-        </p>
-        <p class="wordcount">98 words</p>
-      </div>
+      <p class="annotation">
+        Based on a survey of 100 project managers across the EMEA region, this paper ranks the most-used PMIS features, the most common software shortcomings, and practitioners' top wish-list items, giving a concrete, feature-level picture of what project managers actually want from PMIS tools rather than what vendors claim their tools do. The reason it's here is that it reports lived practitioner experience, which is more useful for evaluating real PMIS options than a purely theoretical overview would be. Anyone selecting, configuring, or advocating for PMIS software within their organization, especially IT directors comparing vendors, will find it useful for building an evidence-based case. The survey is now over a decade old and not healthcare-specific, so its findings should be cross-checked against more recent, sector-specific sources elsewhere in this collection, particularly the 2024 paper on PMIS and cost oversight.
+      </p>
     </div>
 
-    <div class="category-block">
-      <h3>Healthcare IT Governance &amp; PMO Structures</h3>
-
-      <div class="source-card">
-        <p class="src-title"><a href="https://www.pmi.org/learning/library/project-management-office-healthcare-information-technology-8060" target="_blank" rel="noopener">Project Management Office in Healthcare Information Technology</a></p>
-        <p class="src-meta">L. Aziz · PMI Global Congress, via PMI.org</p>
-        <span class="tag">Category: Healthcare IT Governance &amp; PMO Structures</span>
-        <p class="annotation">
-          This paper examines how healthcare IT PMOs differ from PMOs in other industries, outlining the governance,
-          staffing, and tooling foundations a PMO needs to succeed inside a hospital or health system. I included it
-          because it covers the exact organizational angle this collection focuses on: not just PMIS software, but the
-          office and governance structure built around it. Healthcare IT leaders designing or restructuring a PMO will find
-          it most useful. It's a conference paper rather than a peer-reviewed study, though, so its claims rely more on
-          practitioner experience than controlled empirical data.
-        </p>
-        <p class="wordcount">93 words</p>
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.researchgate.net/publication/393062438_PROJECT_MANAGEMENT_INFORMATION_SYSTEMS_PMIS_AS_A_TOOL_FOR_INTEGRATED_COST_AND_TECHNICAL_OVERSIGHT" target="_blank" rel="noopener">Project Management Information Systems (PMIS) as a Tool for Integrated Cost and Technical Oversight</a></p>
+      <p class="src-meta">ResearchGate (2024)</p>
+      <div class="tag-row">
+        <span class="tag">Category: Research &amp; Evidence</span>
+        <span class="tag format">Format: Academic Paper</span>
       </div>
+      <p class="annotation">
+        This 2024 paper examines how PMIS platforms support real-time KPI tracking and integrated cost and technical oversight on complex projects, focusing specifically on how dashboards and reporting modules let managers monitor budget, schedule, and technical risk from one system. Its main strength is currency: it offers a recent counterweight to the older practitioner surveys in this collection and connects directly to the reporting and oversight functions of PMIS that come up constantly in day-to-day healthcare IT work, where budget variance and technical risk both need visibility. Project managers and analysts focused on the reporting and dashboard side of PMIS, rather than initial implementation or vendor selection, will get the most from it. It isn't healthcare-specific, though, so its cost-oversight examples require some translation to a hospital or health-system budgeting context before they're directly useful.
+      </p>
     </div>
 
-    <div class="category-block">
-      <h3>Research &amp; Evidence</h3>
-
-      <div class="source-card">
-        <p class="src-title"><a href="https://www.pmi.org/learning/library/project-management-information-systems-overviews-5813" target="_blank" rel="noopener">Project Management Information Systems Overviews</a></p>
-        <p class="src-meta">M. A. B. Ilyas, M. K. Hassan &amp; M. U. Ilyas · PMI Global Congress 2013, EMEA, via PMI.org</p>
-        <span class="tag">Category: Research &amp; Evidence &gt; Practitioner Data</span>
-        <p class="annotation">
-          Based on a survey of 100 project managers across the EMEA region, this paper ranks the most-used PMIS features,
-          the most common shortcomings, and practitioners' top wish-list items for PMIS software. It's included because it
-          reports what real project managers experience rather than vendor claims or purely theoretical overviews, giving
-          grounded evidence for evaluating PMIS tools. Anyone selecting or advocating for PMIS software within their
-          organization will find it useful. The survey is now over a decade old and not healthcare-specific, so findings
-          should be cross-checked against more recent, sector-specific sources.
-        </p>
-        <p class="wordcount">91 words</p>
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.pmi.org/learning/library/ehr-deployment-projects-best-worst-practices-6036" target="_blank" rel="noopener">Electronic Health Records (EHR) Deployment Projects: Best/Worst Practices</a></p>
+      <p class="src-meta">PMI Global Congress, via PMI.org</p>
+      <div class="tag-row">
+        <span class="tag">Category: Research &amp; Evidence</span>
+        <span class="tag format">Format: Practitioner Paper</span>
       </div>
-
-      <div class="source-card">
-        <p class="src-title"><a href="https://www.researchgate.net/publication/393062438_PROJECT_MANAGEMENT_INFORMATION_SYSTEMS_PMIS_AS_A_TOOL_FOR_INTEGRATED_COST_AND_TECHNICAL_OVERSIGHT" target="_blank" rel="noopener">Project Management Information Systems (PMIS) as a Tool for Integrated Cost and Technical Oversight</a></p>
-        <p class="src-meta">ResearchGate (2024)</p>
-        <span class="tag">Category: Research &amp; Evidence &gt; Academic Research</span>
-        <p class="annotation">
-          This 2024 paper examines how PMIS platforms support real-time KPI tracking and integrated cost and technical
-          oversight on complex projects. Its main strength is currency: it offers a recent counterweight to the older
-          practitioner surveys in this collection and connects directly to the reporting and oversight functions of PMIS
-          that come up constantly in day-to-day healthcare IT work. Project managers and analysts focused on the reporting
-          and dashboard side of PMIS rather than implementation will get the most from it. It isn't healthcare-specific,
-          though, so its examples require some translation to a hospital or health-system context.
-        </p>
-        <p class="wordcount">96 words</p>
-      </div>
+      <p class="annotation">
+        Based on PMI's own library, this paper examines electronic health record deployment projects specifically through the lens of documented best and worst practices, drawing on real project post-mortems to identify what separated successful EHR rollouts from failed ones. This one earns its spot because EHR deployment is one of the largest and highest-risk project types a healthcare IT PMO handles, and this source addresses that specific project type directly rather than healthcare IT project management in general. Project managers actively planning or running an EHR deployment, and PMO leaders building intake checklists or risk frameworks for similar projects, will find it most directly applicable. As a PMI Global Congress paper rather than a peer-reviewed journal article, its findings are drawn from practitioner case reporting rather than a controlled study, so it works best alongside the peer-reviewed research elsewhere in this collection.
+      </p>
     </div>
 
-    <div class="category-block">
-      <h3>Tools &amp; Systems</h3>
+    <div class="source-card">
+      <p class="src-title"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11507143/" target="_blank" rel="noopener">The Impact of Leadership and Management on the Implementation of Electronic Health Record Systems in the Primary Healthcare Centers</a></p>
+      <p class="src-meta">PMC (PubMed Central), peer-reviewed</p>
+      <div class="tag-row">
+        <span class="tag">Category: Research &amp; Evidence</span>
+        <span class="tag format">Format: Journal Article</span>
+      </div>
+      <p class="annotation">
+        This peer-reviewed journal article examines how leadership and management practices affect the success of electronic health record implementations in primary healthcare centers, using empirical data rather than practitioner anecdote to identify which management behaviors correlate with successful adoption. Its main contribution is being the collection's clearest peer-reviewed, empirically grounded source, giving the annotations here a real research backbone rather than relying only on practitioner reports and vendor content. Researchers, students, and healthcare IT leaders who want evidence-based justification for leadership and governance decisions, rather than just practitioner opinion, will find it most useful. The catch: it focuses on primary care centers specifically, which are smaller and structurally different from the hospital or health-system PMOs most other sources in this collection address, so its findings should be scaled carefully rather than applied directly to large enterprise implementations.
+      </p>
+    </div>
+  </section>
 
-      <div class="source-card">
-        <p class="src-title"><a href="https://github.com/opf/openproject" target="_blank" rel="noopener">OpenProject (opf/openproject)</a></p>
-        <p class="src-meta">GitHub repository, open-source PMIS</p>
+  <section id="tools" class="category-block">
+    <h2>Tools &amp; Systems</h2>
+    <p class="category-desc">Real PMIS platforms and assessment frameworks, open-source and commercial, in actual use.</p>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://github.com/opf/openproject" target="_blank" rel="noopener">OpenProject (opf/openproject)</a></p>
+      <p class="src-meta">GitHub repository, open-source PMIS</p>
+      <div class="tag-row">
         <span class="tag">Category: Tools &amp; Systems</span>
-        <p class="annotation">
-          OpenProject is an open-source PMIS whose full codebase, issue tracker, and architecture documentation are
-          publicly available on GitHub. That makes it possible to see how a real PMIS is actually built, including its
-          data models, permissions, and reporting modules, instead of relying only on vendor descriptions or marketing
-          pages. Project managers or IT staff evaluating whether to self-host a PMIS, or anyone wanting to understand
-          PMIS architecture hands-on, will find it most useful. Limitation: OpenProject is a general-purpose PMIS, not
-          built for healthcare specifically, so it won't reflect healthcare compliance or clinical workflow features out
-          of the box.
-        </p>
-        <p class="wordcount">98 words</p>
+        <span class="tag format">Format: Open-Source Tool</span>
       </div>
+      <p class="annotation">
+        OpenProject is an open-source PMIS whose full codebase, issue tracker, and architecture documentation are publicly available on GitHub, covering everything from its underlying data models to its permission structure and reporting modules. That makes it possible to see exactly how a real PMIS is built and configured, instead of relying only on vendor descriptions or marketing pages, which is rare for a working project management platform. Project managers or IT staff evaluating whether to self-host a PMIS, developers considering contributing to or extending an open-source tool, and anyone wanting to understand PMIS architecture hands-on will find it most useful. The catch is that OpenProject is a general-purpose PMIS, not built for healthcare specifically, so it won't reflect healthcare compliance requirements or clinical workflow features out of the box, and evaluating it seriously requires enough technical comfort to install and configure it.
+      </p>
     </div>
 
-    <div class="category-block">
-      <h3>Industry Trends &amp; Current Practice</h3>
-
-      <div class="source-card">
-        <p class="src-title"><a href="https://www.techrepublic.com/article/project-management-information-system/" target="_blank" rel="noopener">A Complete Guide on Project Management Information Systems</a></p>
-        <p class="src-meta">TechRepublic</p>
-        <span class="tag">Category: Industry Trends &amp; Current Practice</span>
-        <p class="annotation">
-          This guide walks through PMIS across the full project lifecycle, pulling implementation examples from several
-          industries and covering best practices like setting clear objectives before configuring a tool. It works well
-          as a current, practitioner-facing counterpoint to the older academic and book sources in this collection,
-          showing how PMIS is being discussed in industry right now. General readers, new project managers, or anyone
-          wanting a fast, non-academic overview will find it most accessible. It's broad and vendor-neutral rather than
-          healthcare-focused, though, so it should be read alongside the more specialized sources here.
-        </p>
-        <p class="wordcount">92 words</p>
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.himss.org/maturity-models/emram/" target="_blank" rel="noopener">Electronic Medical Record Adoption Model (EMRAM)</a></p>
+      <p class="src-meta">HIMSS</p>
+      <div class="tag-row">
+        <span class="tag">Category: Tools &amp; Systems</span>
+        <span class="tag format">Format: Maturity Model</span>
       </div>
+      <p class="annotation">
+        HIMSS's Electronic Medical Record Adoption Model (EMRAM) is a maturity assessment framework, not a PMIS itself, but it defines the stages and outcome benchmarks that healthcare IT projects are frequently measured against, making it essential context for anyone reporting project status upward in a health system. Recently updated to take a more outcomes-driven approach covering clinical outcomes, patient safety, and patient experience, it's widely used internationally as a benchmark for EHR maturity. It matters here because PMIS reporting in healthcare IT often needs to map project milestones to EMRAM stages for executive and board audiences, so understanding the model itself is a prerequisite. Healthcare IT project managers, CIOs, and analysts building status reports or business cases tied to EMR maturity will find it most useful. Keep in mind it measures organizational maturity, not project execution, so it's a complement to a PMIS rather than a replacement for one.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.planview.com/resources/case-study/parkview-health/" target="_blank" rel="noopener">Parkview Health: Optimizing Project Investments with PPM</a></p>
+      <p class="src-meta">Planview, vendor case study</p>
+      <div class="tag-row">
+        <span class="tag">Category: Tools &amp; Systems</span>
+        <span class="tag format">Format: Vendor Case Study</span>
+      </div>
+      <p class="annotation">
+        This case study describes how Parkview Health, a nonprofit health system, implemented Planview's portfolio management software to replace an informal process where nearly every project request was approved regardless of business justification, strategic alignment, or available funding and staff capacity. Its value here is as a real example of a commercial, enterprise-grade PMIS deployment in a healthcare setting, complementing the open-source OpenProject example elsewhere in this collection with a look at how a paid, vendor-supported platform gets adopted and what problem it was bought to solve. IT leaders evaluating commercial PMIS options, or PMO leaders trying to build the business case for formal project intake, will find it most useful. It's published by the vendor itself, though, so it emphasizes success and should be read as a marketing case study rather than an independent evaluation, best balanced against the vendor-neutral sources elsewhere in this collection.
+      </p>
     </div>
   </section>
 
-  <section id="tool">
-    <div class="section-num">Component 4</div>
-    <h2>Tool Selection</h2>
-    <p><strong>Tool: GitHub Pages</strong></p>
-    <div class="card">
-      <table class="tool-table">
-        <tr><th>Consideration</th><th>Why it fits</th></tr>
-        <tr><td>Features</td><td>Renders directly from a GitHub repository into a live, linkable website, so I can add pages or sections as new categories grow through Project 01 without switching tools.</td></tr>
-        <tr><td>Accessibility</td><td>Free, requires no account or login for readers, and the URL can be shared anywhere.</td></tr>
-        <tr><td>Familiarity</td><td>I've already used GitHub Pages in prior coursework, so I can focus effort on content and organization rather than learning a new platform.</td></tr>
-        <tr><td>Fit with structure</td><td>Full control over HTML/CSS means my five function-based categories can be laid out exactly as designed, unlike template-constrained tools such as Notion or Raindrop.io.</td></tr>
-      </table>
+  <section id="trends" class="category-block">
+    <h2>Industry Trends &amp; Current Practice</h2>
+    <p class="category-desc">How PMIS in healthcare IT is being discussed and applied right now, in practitioners' own words and in current reporting.</p>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.techrepublic.com/article/project-management-information-system/" target="_blank" rel="noopener">A Complete Guide on Project Management Information Systems</a></p>
+      <p class="src-meta">TechRepublic</p>
+      <div class="tag-row">
+        <span class="tag">Category: Industry Trends &amp; Current Practice</span>
+        <span class="tag format">Format: Article</span>
+      </div>
+      <p class="annotation">
+        This guide walks through PMIS across the full project lifecycle, from initiation to closeout, pulling implementation examples from several industries and covering best practices like setting clear objectives and success criteria before configuring a tool. It serves as a current, practitioner-facing counterpoint to the older academic and book sources in this collection, showing how PMIS is being discussed in industry right now rather than in a 2011 or 2013 publication. General readers, new project managers, or anyone wanting a fast, non-academic overview before going deeper into the more specialized sources here will find it most accessible. It's broad and vendor-neutral rather than healthcare-focused, so its examples skew toward generic corporate IT projects, and it should be read alongside the healthcare-specific sources in this collection rather than as a standalone healthcare resource.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.pmi.org/projectified-podcast/podcasts/healthcare-innovation-keeping-the-focus-on-patients" target="_blank" rel="noopener">Healthcare Innovation: Keeping the Focus on Patients</a></p>
+      <p class="src-meta">Projectified Podcast, PMI</p>
+      <div class="tag-row">
+        <span class="tag">Category: Industry Trends &amp; Current Practice</span>
+        <span class="tag format">Format: Podcast</span>
+      </div>
+      <p class="annotation">
+        In this Projectified episode, the director of the enterprise project management team at Moffitt Cancer Center (winner of PMI's 2021 PMO of the Year award) discusses how the organization's PMO approached innovation and adapted its project intake and delivery during the pandemic. Its value lies in being a first-person account from a healthcare PMO leader at an award-recognized organization, offering the kind of candid, day-to-day perspective that formal papers and books rarely capture, including how priorities shifted under real operational pressure. Healthcare IT PMO leaders and project managers wanting to hear how a top-performing healthcare PMO actually operates, in the PMO leader's own words, will benefit most. It's a single organization's experience and a conversational format rather than a rigorous study, though, so its value is illustrative and motivational rather than a generalizable framework, and it should be paired with more structured sources for implementation detail.
+      </p>
+    </div>
+
+    <div class="source-card">
+      <p class="src-title"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/innovation/the-year-in-it-at-10-major-health-systems/" target="_blank" rel="noopener">The Year in IT at 10 Major Health Systems</a></p>
+      <p class="src-meta">Becker's Hospital Review</p>
+      <div class="tag-row">
+        <span class="tag">Category: Industry Trends &amp; Current Practice</span>
+        <span class="tag format">Format: News Article</span>
+      </div>
+      <p class="annotation">
+        Becker's Hospital Review's year-end roundup profiles the most significant health IT projects across ten major health systems, covering large-scale initiatives such as Adventist Health's Epic rollout across 27 hospitals and Northwell Health's enterprise EHR implementation, with details on scale, timeline, and organizational impact. Its usefulness is in being a snapshot of what large-scale healthcare IT project management actually looks like in practice right now, at a scale most other sources in this collection only discuss theoretically, showing real project scope and duration. Healthcare IT executives, project managers benchmarking their own project scope against peer organizations, and students researching real-world case examples will find it most useful. As a news roundup rather than an in-depth case study, though, each health system's story gets only a few paragraphs, so readers wanting deeper detail on any one project will need to follow up with that health system's own reporting.
+      </p>
     </div>
   </section>
 
   <footer>
-    CMPA 4301, Assignment 01: Curation Planning Document · Sid Bhardwaj
+    CMPA 4301, Project 01: Curated Collection · Sid Bhardwaj · Built with GitHub Pages ·
+    <a href="assignment-01.html">Assignment 01 planning document</a>
   </footer>
 
 </div>
