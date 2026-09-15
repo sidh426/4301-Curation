@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthesis Plan: PMIS Getting-Started Guide</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --surface: #ffffff;
+    --ink: #1c1e21;
+    --ink-soft: #4a4f57;
+    --border: #e2e4e8;
+    --accent: #2a5d8f;
+    --accent-soft: #eaf1f8;
+    --tag-bg: #eef2ee;
+    --tag-ink: #33513c;
+    --radius: 10px;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  header.hero {
+    padding: 56px 0 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  header.hero .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  header.hero h1 {
+    font-family: var(--serif);
+    font-size: 2.1rem;
+    line-height: 1.25;
+    margin: 0 0 12px;
+  }
+  header.hero p.meta {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  nav.toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  nav.toc a {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  nav.toc a:hover { border-color: var(--accent); }
+  nav.toc a.alt {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--ink-soft);
+  }
+
+  section {
+    margin-bottom: 52px;
+    scroll-margin-top: 20px;
+  }
+  section h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+  }
+  section .section-num {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  section > p {
+    margin: 14px 0;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin: 16px 0;
+  }
+  .qa {
+    margin: 18px 0;
+  }
+  .qa h3 {
+    font-size: 0.95rem;
+    color: var(--accent);
+    margin: 0 0 4px;
+  }
+  .qa p {
+    margin: 0;
+  }
+
+  .outline-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-bottom: 18px;
+  }
+  .outline-item .outline-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .outline-item h3 {
+    margin: 2px 0 8px;
+    font-size: 1.1rem;
+  }
+  .outline-item p.desc {
+    margin: 0 0 12px;
+    font-size: 0.94rem;
+  }
+  .source-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-ink);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  footer a { color: var(--accent); }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --surface: #1c1f24;
+      --ink: #eceef1;
+      --ink-soft: #a3a9b3;
+      --border: #2c3038;
+      --accent: #7fb2e5;
+      --accent-soft: #1e2a36;
+      --tag-bg: #1e2b22;
+      --tag-ink: #9bd2ac;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">CMPA 4301 · Synthesis Planning · Feeds Project 02</div>
+    <h1>Planning a Getting-Started Guide to Standing Up a PMIS in Healthcare IT</h1>
+    <p class="meta">Sid Bhardwaj · sidhbhardwaj426@gmail.com · Built from the 18-source collection in Project 01.</p>
+    <nav class="toc">
+      <a href="#audience">1. Audience Profile</a>
+      <a href="#format">2. Format Choice</a>
+      <a href="#outline">3. Annotated Outline</a>
+      <a href="index.html" class="alt">&larr; Project 01 collection</a>
+    </nav>
+  </header>
+
+  <section id="audience">
+    <div class="section-num">Component 1 · 15 pts</div>
+    <h2>Audience Profile</h2>
+
+    <div class="qa">
+      <h3>Who is this for?</h3>
+      <p>
+        Newly appointed healthcare IT project managers and PMO leads: someone who has just been asked to
+        formalize project management inside a hospital or health system that has been running projects
+        informally through spreadsheets, email threads, and verbal check-ins. They are usually the first
+        person in their organization asked to answer how projects will be managed centrally, often after a
+        delayed EHR module or a system integration that went over budget pushed leadership to demand more
+        visibility.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>What do they already know?</h3>
+      <p>
+        General IT project basics: running a meeting, tracking a task list, and working with vendors. Many
+        have led individual projects successfully and are comfortable with technology. What they have not
+        done is select or stand up a formal PMIS, justify a governance structure to hospital executives, or
+        account for how healthcare-specific factors, such as regulatory compliance, clinical stakeholder
+        buy-in, and maturity benchmarks like EMRAM, change what good project management looks like compared
+        to general corporate IT.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>What do they need?</h3>
+      <p>
+        A practical decision-making guide rather than a textbook: something that helps them weigh whether to
+        build, buy, or adapt a PMIS, understand what a healthcare PMO actually does day to day, and report
+        progress in language executives already use. They are filling a specific gap: they know project
+        management in the abstract but not how it is actually practiced inside a health system.
+      </p>
+    </div>
+
+    <div class="qa">
+      <h3>How will they use it?</h3>
+      <p>
+        Mainly for decision-making, while actively drafting a proposal or business case for leadership, kept
+        open in one tab and referred back to for specific sections rather than read straight through in one
+        sitting. Secondarily as a quick refresher once the PMIS is chosen and they need to explain the
+        reasoning to their team.
+      </p>
+    </div>
+  </section>
+
+  <section id="format">
+    <div class="section-num">Component 2 · 5 pts</div>
+    <h2>Format Choice</h2>
+    <div class="card">
+      <p><strong>Format: Getting-started guide, organized sequentially.</strong></p>
+      <p>
+        I'm structuring this as a sequential how-to guide that follows the actual order someone moves through
+        the first time they stand up a PMIS: get oriented, build the case, weigh the evidence, choose a tool,
+        and report results. My audience is going through a real, mostly one-time decision-making process
+        rather than returning repeatedly to look something up, so a guide that mirrors the order of that
+        process fits their need better than a problem-first FAQ or an alphabetical reference document.
+      </p>
+    </div>
+  </section>
+
+  <section id="outline">
+    <div class="section-num">Component 3 · 20 pts</div>
+    <h2>Annotated Outline</h2>
+    <p>Six sections, each mapped to one or two sources from the Project 01 collection.</p>
+
+    <div class="outline-item">
+      <div class="outline-num">Section 1</div>
+      <h3>Getting Oriented: What a PMIS Actually Is</h3>
+      <p class="desc">Establishes shared vocabulary and dispels the assumption that a PMIS is just project software, before any decision-making begins.</p>
+      <div class="source-tags">
+        <span class="tag">Project management information system (Wikipedia)</span>
+        <span class="tag">A Complete Guide on Project Management Information Systems (TechRepublic)</span>
+      </div>
+    </div>
+
+    <div class="outline-item">
+      <div class="outline-num">Section 2</div>
+      <h3>Building the Case for a Formal PMO</h3>
+      <p class="desc">Explains what a healthcare IT PMO does differently from a general PMO, then grounds that explanation in a real, currently operating example a reader can point to when pitching leadership.</p>
+      <div class="source-tags">
+        <span class="tag">Project Management Office in Healthcare Information Technology (PMI.org)</span>
+        <span class="tag">UI Health Care Project Management Office (University of Iowa Health Care)</span>
+      </div>
+    </div>
+
+    <div class="outline-item">
+      <div class="outline-num">Section 3</div>
+      <h3>What the Evidence Actually Says</h3>
+      <p class="desc">Distills survey and case data on which PMIS features and reporting practices actually improve outcomes, so later recommendations are grounded in evidence instead of opinion.</p>
+      <div class="source-tags">
+        <span class="tag">Project Management Information Systems Overviews (PMI.org survey)</span>
+        <span class="tag">PMIS as a Tool for Integrated Cost and Technical Oversight (ResearchGate, 2024)</span>
+      </div>
+    </div>
+
+    <div class="outline-item">
+      <div class="outline-num">Section 4</div>
+      <h3>Choosing Your Tool: Build, Buy, or Adapt</h3>
+      <p class="desc">Walks through the real trade-off between an open-source platform and a commercial vendor deployment using two actual examples instead of abstract pros and cons.</p>
+      <div class="source-tags">
+        <span class="tag">OpenProject (GitHub)</span>
+        <span class="tag">Parkview Health: Optimizing Project Investments with PPM (Planview case study)</span>
+      </div>
+    </div>
+
+    <div class="outline-item">
+      <div class="outline-num">Section 5</div>
+      <h3>Reporting Progress the Way Executives Expect</h3>
+      <p class="desc">Shows how to translate project milestones into the maturity-model language hospital boards already use, plus what a high-risk project type like EHR deployment specifically requires in reporting.</p>
+      <div class="source-tags">
+        <span class="tag">Electronic Medical Record Adoption Model, EMRAM (HIMSS)</span>
+        <span class="tag">EHR Deployment Projects: Best/Worst Practices (PMI.org)</span>
+      </div>
+    </div>
+
+    <div class="outline-item">
+      <div class="outline-num">Section 6</div>
+      <h3>Learning From People Already Doing This</h3>
+      <p class="desc">Rounds out the guide with practitioner voice: a first-person account from an award-winning healthcare PMO leader and a current snapshot of how major health systems are running large IT projects right now.</p>
+      <div class="source-tags">
+        <span class="tag">Healthcare Innovation: Keeping the Focus on Patients (Projectified Podcast, PMI)</span>
+        <span class="tag">The Year in IT at 10 Major Health Systems (Becker's Hospital Review)</span>
+      </div>
+    </div>
+
+    <p style="font-size:0.88rem; color:var(--ink-soft);">
+      Six of the eighteen Project 01 sources (the Houston and Coplan/Masuda books, the Coursera course, the
+      ONC Health IT Playbook, the Optimum Healthcare IT video, and the PMC journal article) aren't mapped to a
+      section above. They stay in reserve as supporting depth for Project 02 rather than forcing a fit into
+      this six-section shape.
+    </p>
+  </section>
+
+  <footer>
+    CMPA 4301, Synthesis Planning Assignment · Sid Bhardwaj ·
+    <a href="index.html">Project 01: Curated Collection</a> ·
+    <a href="assignment-01.html">Assignment 01: Curation Plan</a>
+  </footer>
+
+</div>
+</body>
+</html>
