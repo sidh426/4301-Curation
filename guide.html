@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standing Up a PMIS in Healthcare IT</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --surface: #ffffff;
+    --ink: #1c1e21;
+    --ink-soft: #4a4f57;
+    --border: #e2e4e8;
+    --accent: #2a5d8f;
+    --accent-soft: #eaf1f8;
+    --radius: 10px;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.68;
+  }
+  .wrap {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 24px 90px;
+  }
+  header.hero {
+    padding: 56px 0 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  header.hero .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  header.hero h1 {
+    font-family: var(--serif);
+    font-size: 2.3rem;
+    line-height: 1.2;
+    margin: 0 0 14px;
+  }
+  header.hero p.meta {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0 0 18px;
+  }
+  .audience-box {
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 0.92rem;
+  }
+  .audience-box strong { color: var(--accent); }
+
+  nav.toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0 40px;
+  }
+  nav.toc a {
+    font-size: 0.83rem;
+    text-decoration: none;
+    color: var(--accent);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  nav.toc a:hover { border-color: var(--accent); }
+  nav.toc a.alt { color: var(--ink-soft); }
+
+  article p {
+    font-size: 1.03rem;
+    margin: 0 0 18px;
+  }
+  section.intro {
+    margin-bottom: 44px;
+  }
+  section.guide-section {
+    margin-bottom: 44px;
+    scroll-margin-top: 20px;
+  }
+  section.guide-section h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 0.96rem;
+    margin: 18px 0;
+  }
+  a.src {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+  a.src:hover { opacity: 0.8; }
+
+  section.refs {
+    margin-top: 56px;
+  }
+  section.refs h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--accent);
+    margin: 0 0 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  section.refs p.note {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 0 0 18px;
+  }
+  ol.ref-list {
+    padding-left: 22px;
+    margin: 0;
+  }
+  ol.ref-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+  }
+  ol.ref-list a {
+    color: var(--accent);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 50px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  footer a { color: var(--accent); }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --surface: #1c1f24;
+      --ink: #eceef1;
+      --ink-soft: #a3a9b3;
+      --border: #2c3038;
+      --accent: #7fb2e5;
+      --accent-soft: #1e2a36;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">A Getting-Started Guide</div>
+    <h1>Standing Up a PMIS in Healthcare IT</h1>
+    <p class="meta">By Sid Bhardwaj</p>
+    <div class="audience-box">
+      <strong>Who this is for:</strong> newly appointed healthcare IT project managers and PMO leads who
+      have just been asked to formalize project management at their organization for the first time, and who
+      need a practical, evidence-based way to decide how to do it, not a textbook.
+    </div>
+    <nav class="toc">
+      <a href="#s1">1. Getting Oriented</a>
+      <a href="#s2">2. Building the Case</a>
+      <a href="#s3">3. The Evidence</a>
+      <a href="#s4">4. Choosing a Tool</a>
+      <a href="#s5">5. Reporting Progress</a>
+      <a href="#s6">6. Learning From Others</a>
+      <a href="#s7">Before You Close This Tab</a>
+      <a href="#refs">Sources</a>
+      <a href="index.html" class="alt">&larr; Project 01 collection</a>
+    </nav>
+  </header>
+
+  <article>
+    <section class="intro">
+      <p>
+        This guide walks newly appointed healthcare IT project managers and PMO leads through the process of
+        standing up a formal Project Management Information System (PMIS) for the first time. If you are
+        reading this, there is a good chance you were just handed responsibility for centralizing how your
+        organization manages IT projects, probably after something like a delayed EHR module or an
+        integration that went over budget forced leadership to ask for more visibility. You already know how
+        to run a project. What you likely have not done yet is choose or configure a formal PMIS, build the
+        case for a PMO to hospital executives, or account for the healthcare-specific factors, like regulatory
+        compliance, clinical buy-in, and maturity models such as EMRAM, that change what good project
+        management looks like in a hospital compared to general corporate IT. This guide follows the order
+        you will actually move through as you make that decision.
+      </p>
+    </section>
+
+    <section class="guide-section" id="s1">
+      <h2>1. Getting Oriented: What a PMIS Actually Is</h2>
+      <p>
+        Before making any decisions, it helps to get the terminology straight, since PMIS is a term people
+        throw around loosely. At its core, a PMIS is the combination of tools, processes, and data used to
+        plan, execute, and report on projects, not just a piece of software you buy.
+        <a class="src" href="https://en.wikipedia.org/wiki/Project_management_information_system" target="_blank" rel="noopener">Wikipedia's entry on the topic</a>
+        draws a useful distinction here, separating a PMIS from a general project management system: a PMIS
+        specifically centers on the information and reporting side, things like status data, resource
+        allocation, and documentation, rather than just task execution.
+        <a class="src" href="https://www.techrepublic.com/article/project-management-information-system/" target="_blank" rel="noopener">TechRepublic's guide</a>
+        builds on this by walking through how a PMIS functions across the entire project lifecycle, from
+        initiation through closeout, covering practices like setting clear objectives before you ever
+        configure a tool. Together, these two sources establish the shared vocabulary needed before
+        evaluating any specific PMIS option.
+      </p>
+    </section>
+
+    <section class="guide-section" id="s2">
+      <h2>2. Building the Case for a Formal PMO</h2>
+      <p>
+        Once you understand what a PMIS is, the next step is usually pitching formal project governance to
+        people who have gotten by without it. This is where healthcare specifically diverges from general
+        corporate IT. A
+        <a class="src" href="https://www.pmi.org/learning/library/project-management-office-healthcare-information-technology-8060" target="_blank" rel="noopener">PMI.org paper on healthcare IT PMOs</a>
+        explains that governance models, staffing patterns, and reporting lines in a hospital PMO look
+        structurally different from a PMO in, say, a retail or finance company, largely because of how
+        clinical stakeholders and compliance requirements insert themselves into every decision. It helps to
+        pair that conceptual explanation with something concrete. The
+        <a class="src" href="https://hcis.healthcare.uiowa.edu/pmo/index.html" target="_blank" rel="noopener">University of Iowa Health Care PMO</a>
+        publishes its own standards, status-reporting templates, and consultation services publicly, giving
+        readers an actual, currently operating example to point to instead of an abstract description. When
+        building a business case, showing executives a real academic medical center doing this successfully
+        lands better than theory alone.
+      </p>
+    </section>
+
+    <section class="guide-section" id="s3">
+      <h2>3. What the Evidence Actually Says</h2>
+      <p>
+        Before choosing a tool or process, it is worth grounding decisions in actual evidence rather than
+        vendor claims or internal opinion. A
+        <a class="src" href="https://www.pmi.org/learning/library/project-management-information-systems-overviews-5813" target="_blank" rel="noopener">PMI Global Congress survey of 100 project managers</a>
+        found that in practice, users value certain core PMIS features far more than others, features that do
+        not always match what marketing materials highlight, revealing a persistent gap between what vendors
+        promise and what practitioners say actually helps them. A
+        <a class="src" href="https://www.researchgate.net/publication/393062438_PROJECT_MANAGEMENT_INFORMATION_SYSTEMS_PMIS_AS_A_TOOL_FOR_INTEGRATED_COST_AND_TECHNICAL_OVERSIGHT" target="_blank" rel="noopener">more recent 2024 paper</a>
+        looks specifically at how PMIS platforms support real-time cost and technical oversight, essentially
+        how dashboards let managers catch budget and schedule risk before it becomes a crisis rather than
+        after. Reading these together, the pattern that emerges is that reporting and oversight functionality
+        tends to matter more to practitioners day to day than flashy features, which should shape how readers
+        weigh their options in the next section.
+      </p>
+    </section>
+
+    <section class="guide-section" id="s4">
+      <h2>4. Choosing Your Tool: Build, Buy, or Adapt</h2>
+      <p>
+        This is usually the point where people jump straight to comparing vendor feature lists, but it helps
+        to first understand the real trade-off between building on an open-source tool versus buying a
+        commercial platform.
+        <a class="src" href="https://github.com/opf/openproject" target="_blank" rel="noopener">OpenProject</a>
+        is a fully open-source PMIS, and because its entire codebase and architecture documentation are
+        public on GitHub, a team can actually see how its data model, permissions, and reporting modules work
+        before committing to it, something not possible with most closed commercial products. On the other
+        end, a
+        <a class="src" href="https://www.planview.com/resources/case-study/parkview-health/" target="_blank" rel="noopener">Planview case study on Parkview Health</a>,
+        a nonprofit health system, shows what adopting a commercial, vendor-supported platform looks like in
+        practice: they used it to replace an informal process where almost every project request got
+        approved regardless of actual business justification or available capacity. Neither approach is
+        universally right. The decision comes down to an organization's technical capacity and its appetite
+        for vendor support versus internal control.
+      </p>
+    </section>
+
+    <section class="guide-section" id="s5">
+      <h2>5. Reporting Progress the Way Executives Expect</h2>
+      <p>
+        Once a PMIS is running, project managers need to report progress in language executives already
+        understand, and this is where the
+        <a class="src" href="https://www.pmi.org/learning/library/ehr-deployment-projects-best-worst-practices-6036" target="_blank" rel="noopener">PMI EHR Deployment Best/Worst Practices paper</a>
+        and HIMSS's
+        <a class="src" href="https://www.himss.org/maturity-models/emram/" target="_blank" rel="noopener">EMRAM model</a>
+        (the Electronic Medical Record Adoption Model, a widely used benchmark for how far a hospital's EHR
+        capabilities have progressed) do different but complementary jobs. The PMI paper draws on post-mortems of real EHR deployments to
+        show what separated the rollouts that succeeded from the ones that did not, and one recurring theme
+        is that successful projects reported progress against milestones tied to a defined maturity path
+        rather than against an internal project plan alone. That is exactly the gap EMRAM fills: it gives
+        hospital boards a maturity benchmark most executives are already somewhat familiar with, so mapping
+        project milestones to EMRAM stages translates technical progress into something leadership can act on.
+      </p>
+      <p>
+        Here is what that mapping actually looks like in practice. If your project includes rolling out
+        computerized provider order entry (CPOE) to every clinician licensed to place orders, alongside a
+        second tier of evidence-based clinical decision support, you are not just closing a task on a Gantt
+        chart, you are completing the core requirement of EMRAM Stage 4. If the next phase adds bar-coded,
+        closed-loop medication administration, tying an electronic order to an identified nurse, a scanned
+        medication, and a scanned patient, that milestone maps to Stage 5. Framing status updates this way
+        turns a report that says "CPOE go-live is 80% complete" into one that says "we are on track to close
+        out Stage 4 by Q3, which unlocks the clinical decision support capability the board asked about last
+        quarter." That second version is the one that gets budget approved.
+      </p>
+    </section>
+
+    <section class="guide-section" id="s6">
+      <h2>6. Learning From People Already Doing This</h2>
+      <p>
+        Everything up to this point has been process and evidence. It helps to end with what it actually
+        looks like when a healthcare PMO gets this right, because a maturity model and a best-practices paper
+        can tell you what to do without ever showing you what doing it well feels like day to day.
+      </p>
+      <p>
+        In a
+        <a class="src" href="https://www.pmi.org/projectified-podcast/podcasts/healthcare-innovation-keeping-the-focus-on-patients" target="_blank" rel="noopener">Projectified podcast episode</a>,
+        the director of the enterprise project management team at Moffitt Cancer Center, winner of PMI's 2021
+        PMO of the Year award, describes how her PMO stayed focused on patient impact even while
+        reorganizing priorities mid-pandemic. What comes through in that conversation is not a framework, it
+        is a habit: every project decision got run back through the question of what it meant for patients,
+        which is a useful gut check for any PMO leader building intake criteria, since it is easy for a new
+        PMO to default to ranking projects by cost or executive sponsor rather than by patient impact.
+      </p>
+      <p>
+        Zoom out from one PMO's story to the industry level and
+        <a class="src" href="https://www.beckershospitalreview.com/healthcare-information-technology/innovation/the-year-in-it-at-10-major-health-systems/" target="_blank" rel="noopener">Becker's Hospital Review's year-end roundup</a>
+        of major health system IT projects shows the same pattern repeating at scale: Adventist Health's Epic
+        rollout across 27 hospitals, Northwell Health's enterprise EHR implementation, and similar projects at
+        other large systems all involved the same ingredients this guide has walked through, formal
+        governance, tool decisions made deliberately rather than by default, and progress reported in terms
+        executives could act on. The scale is different from what a single newly formed PMO will manage in
+        its first year, but the underlying discipline is the same one this guide has been building toward
+        since Section 1.
+      </p>
+      <div class="callout">
+        If you take one thing from this guide, take this: a PMIS is not the goal. It is the infrastructure
+        that lets a PMO consistently make the kind of patient-focused, evidence-based decisions Moffitt's
+        team describes, at whatever scale your organization operates.
+      </div>
+    </section>
+
+    <section class="guide-section" id="s7">
+      <h2>Before You Close This Tab</h2>
+      <p>
+        If you only have twenty minutes today, do these five things in order. First, skim the Wikipedia and
+        TechRepublic pieces from Section 1 so you have a two-sentence definition of PMIS ready for your next
+        conversation with leadership. Second, pull up the University of Iowa PMO page from Section 2 and note
+        two or three of their status-reporting templates as talking points for your own pitch. Third, look at
+        which single PMIS feature the PMI survey in Section 3 found practitioners value most, since that
+        becomes your first evaluation criterion once you start comparing tools. Fourth, decide, even
+        provisionally, whether your organization leans toward OpenProject's self-hosted control or a
+        vendor-supported model like the one Parkview Health adopted in Section 4. Fifth, find out which EMRAM
+        stage your organization is currently sitting at, since every milestone you report from here forward
+        should be framed against it. None of these five things require a finished PMIS. They just require you
+        to stop reading and start asking questions inside your own organization.
+      </p>
+    </section>
+  </article>
+
+  <section class="refs" id="refs">
+    <h2>Sources</h2>
+    <p class="note">
+      Cited inline above; this guide draws on twelve sources from a larger
+      <a href="index.html">18-source curated collection on PMIS in healthcare IT</a>, which covers additional
+      ground this guide didn't need for a first-time getting-started audience.
+    </p>
+    <ol class="ref-list">
+      <li>"Project management information system." <a href="https://en.wikipedia.org/wiki/Project_management_information_system" target="_blank" rel="noopener">Wikipedia</a>.</li>
+      <li>"A Complete Guide on Project Management Information Systems." <a href="https://www.techrepublic.com/article/project-management-information-system/" target="_blank" rel="noopener">TechRepublic</a>.</li>
+      <li>"Project Management Office in Healthcare Information Technology." <a href="https://www.pmi.org/learning/library/project-management-office-healthcare-information-technology-8060" target="_blank" rel="noopener">PMI.org Learning Library</a>.</li>
+      <li>"UI Health Care Project Management Office." <a href="https://hcis.healthcare.uiowa.edu/pmo/index.html" target="_blank" rel="noopener">University of Iowa Health Care</a>.</li>
+      <li>Ilyas, M. A. B., Hassan, M. K., &amp; Ilyas, M. U. "Project Management Information Systems Overviews." <a href="https://www.pmi.org/learning/library/project-management-information-systems-overviews-5813" target="_blank" rel="noopener">PMI Global Congress 2013, via PMI.org</a>.</li>
+      <li>"Project Management Information Systems (PMIS) as a Tool for Integrated Cost and Technical Oversight." <a href="https://www.researchgate.net/publication/393062438_PROJECT_MANAGEMENT_INFORMATION_SYSTEMS_PMIS_AS_A_TOOL_FOR_INTEGRATED_COST_AND_TECHNICAL_OVERSIGHT" target="_blank" rel="noopener">ResearchGate</a> (2024).</li>
+      <li>OpenProject (opf/openproject). <a href="https://github.com/opf/openproject" target="_blank" rel="noopener">GitHub repository</a>.</li>
+      <li>"Parkview Health: Optimizing Project Investments with PPM." <a href="https://www.planview.com/resources/case-study/parkview-health/" target="_blank" rel="noopener">Planview case study</a>.</li>
+      <li>"Electronic Medical Record Adoption Model (EMRAM)." <a href="https://www.himss.org/maturity-models/emram/" target="_blank" rel="noopener">HIMSS</a>.</li>
+      <li>"Electronic Health Records (EHR) Deployment Projects: Best/Worst Practices." <a href="https://www.pmi.org/learning/library/ehr-deployment-projects-best-worst-practices-6036" target="_blank" rel="noopener">PMI Global Congress, via PMI.org</a>.</li>
+      <li>"Healthcare Innovation: Keeping the Focus on Patients." <a href="https://www.pmi.org/projectified-podcast/podcasts/healthcare-innovation-keeping-the-focus-on-patients" target="_blank" rel="noopener">Projectified Podcast, PMI</a>.</li>
+      <li>"The Year in IT at 10 Major Health Systems." <a href="https://www.beckershospitalreview.com/healthcare-information-technology/innovation/the-year-in-it-at-10-major-health-systems/" target="_blank" rel="noopener">Becker's Hospital Review</a>.</li>
+    </ol>
+  </section>
+
+  <footer>
+    CMPA 4301, Project 02: Synthesis Product · Sid Bhardwaj ·
+    <a href="index.html">Project 01: Curated Collection</a> ·
+    <a href="project-02-plan.html">Synthesis Plan</a>
+  </footer>
+
+</div>
+</body>
+</html>
